@@ -24,7 +24,7 @@ async function init() {
     tf.registerKernel(newKernelConfig);
   });
 
-  adapter = await navigator.gpu.requestAdapter();
+  adapter = await navigator.gpu.requestAdapter({ powerPreference: 'high-performance' });
   device = await adapter.requestDevice();
 
   tf.registerBackend(customBackendName, async () => {
